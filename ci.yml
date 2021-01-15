@@ -12,6 +12,8 @@ pool:
   vmImage: "ubuntu-latest"
 
 steps:
+  - checkout: self
+    persistCredentials: true
   - task: Gradle@2
     inputs:
       workingDirectory: ""
