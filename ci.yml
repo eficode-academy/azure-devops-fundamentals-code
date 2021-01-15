@@ -25,8 +25,8 @@ steps:
   #      publishJUnitResults: true
   #      testResultsFiles: "**/TEST-*.xml"
   #      tasks: "test"
-  - script: |
-      git checkout $(Build.SourceBranch)
+  - name: Merge to master
+    script: |
       git rebase origin/master
       git branch master
       git push origin master:master
