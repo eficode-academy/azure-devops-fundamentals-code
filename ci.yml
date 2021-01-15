@@ -30,4 +30,4 @@ steps:
       git branch master
       git push origin master:master
       git push origin :$(Build.SourceBranch)
-    name: Merge to master
+    displayName: "Merge to master"
