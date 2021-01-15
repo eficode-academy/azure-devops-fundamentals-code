@@ -1,0 +1,54 @@
+plugins {
+    id 'java'
+    id 'application'
+	id 'org.springframework.boot' version '2.3.3.RELEASE'
+	id 'io.spring.dependency-management' version '1.0.8.RELEASE'
+}
+
+mainClassName = 'com.example.Main'
+
+repositories { 
+    mavenCentral() 
+}
+
+jar {
+    archiveBaseName = 'ad-service'
+    archiveVersion =  '1.0.0'
+    manifest {
+        attributes(
+            'Main-Class': 'com.example.Main'
+        )
+    }
+    from {
+        configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}
+
+test {
+    testLogging {
+        events "passed", "skipped", "failed", "standardOut", "standardError"
+    }
+    useJUnitPlatform {
+		excludeTags 'slow'
+	}
+}
+task slowTest(type: Test) {
+	useJUnitPlatform {
+		includeTags 'slow'
+	}
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.3.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.3.1'
+
+    compile group: 'com.googlecode.json-simple', name: 'json-simple', version: '1.1.1'
+
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	testImplementation('org.springframework.boot:spring-boot-starter-test') {
+		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+	}
+}
