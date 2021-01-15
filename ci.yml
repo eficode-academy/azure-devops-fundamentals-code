@@ -14,18 +14,18 @@ pool:
 steps:
   - checkout: self
     persistCredentials: true
-  - task: Gradle@2
-    inputs:
-      workingDirectory: ""
-      gradleWrapperFile: "gradlew"
-      gradleOptions: "-Xmx3072m"
-      javaHomeOption: "JDKVersion"
-      jdkVersionOption: "1.8"
-      jdkArchitectureOption: "x64"
-      publishJUnitResults: true
-      testResultsFiles: "**/TEST-*.xml"
-      tasks: "test"
-  - bash: git checkout ${GITHUB_REF#refs/heads/}
+  #  - task: Gradle@2
+  #    inputs:
+  #      workingDirectory: ""
+  #      gradleWrapperFile: "gradlew"
+  #      gradleOptions: "-Xmx3072m"
+  #      javaHomeOption: "JDKVersion"
+  #      jdkVersionOption: "1.8"
+  #      jdkArchitectureOption: "x64"
+  #      publishJUnitResults: true
+  #      testResultsFiles: "**/TEST-*.xml"
+  #      tasks: "test"
+  - bash: git branch -v
   - bash: git rebase origin/main
   - bash: git branch main
   - bash: git push origin main:main
