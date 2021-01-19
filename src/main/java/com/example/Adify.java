@@ -14,7 +14,7 @@ class Adify {
     try {
       String content = service.get("?product=" + productId);
       JSONObject obj = (JSONObject) new JSONParser().parse(content);
-      return (String) obj.get("product");
+      return (String) obj.get("product-name");
     } catch (Exception e) {
       return "";
     }

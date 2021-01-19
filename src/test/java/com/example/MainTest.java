@@ -9,10 +9,10 @@ class MainTest {
 
   @Test
   @Tag("slow")
-  void foo() throws Exception {
+  void everything_works() throws Exception {
     Adify adify = new Adify(new HerokuGetRequest("adify"));
     String result = adify.fetch("Coffee");
-		assertEquals("fixme", result);
+		assertEquals("Chocolate", result);
   }
 
 }
