@@ -18,7 +18,10 @@ public class Main {
 	}
 	@GetMapping("/")
 	public String index() {
-    return "Running...";
+		if(FeatureToggle.getWorkingFlag())
+  	  return "Working...";
+		else
+	    return "Running...";
 	}
 
 	public static void main(String[] args) {
