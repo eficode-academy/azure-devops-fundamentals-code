@@ -36,6 +36,20 @@
 
 1. Access `localhost:5000` or `localhost:5000/get?product=XXX` through a browser
 
+## How to deploy
+
+1. First time add the `heroku` remote to git
+
+```
+git remote add heroku https://heroku:$(PAT)@git.heroku.com/$(AppName).git
+```
+
+1. Then to deploy the current branch use the command
+
+```
+git push heroku HEAD:refs/heads/master
+```
+
 ## How to contribute
 
 1. Create a feature branch
